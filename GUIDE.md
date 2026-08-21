@@ -6,22 +6,22 @@ Building production-grade React components that handle real-time WebSockets, asy
 
 Before writing a single line of code for data-heavy components, evaluate these four core dimensions:
 
-* **1. Memory & Resource Ownership**
+**1. Memory & Resource Ownership**
 * *Question:* Who owns the active connection, DOM node, or binary memory blob?
 * *Rule:* Any resource created outside React's state tree (WebSocket connections, `URL.createObjectURL` references, Web Workers, IndexedDB transactions) **must** have an explicit destruction lifecycle wired directly to a cleanup function.
 
 
-* **2. Render Frequency vs. Data Ingestion**
+**2. Render Frequency vs. Data Ingestion**
 * *Question:* Does incoming data arrive faster than the monitor frame rate (60Hz / 16.6ms)?
 * *Rule:* Never write high-frequency stream payloads directly into React `useState`. Buffer incoming network events off-tree in `useRef` or external stores, and batch UI syncs using `requestAnimationFrame` or `useSyncExternalStore`.
 
 
-* **3. Async Stale Closures & Race Conditions**
+**3. Async Stale Closures & Race Conditions**
 * *Question:* What happens if a prop or route changes while a 500MB S3 upload or API call is in flight?
 * *Rule:* Every async operation must support cancellation via `AbortController`. Never assume an async promise resolution is still relevant by the time it resolves.
 
 
-* **4. Strict Mode & Component Idempotency**
+**4. Strict Mode & Component Idempotency**
 * *Question:* Does mounting, immediate unmounting, and re-mounting create duplicate socket connections or leaked HTTP requests?
 * *Rule:* Cleanup functions must be fully idempotent—calling them multiple times in rapid succession must leave the browser in a clean, predictable state.
 
@@ -176,8 +176,6 @@ export function ResilientUploadManager({
 ```
 
 ## Module 1: Foundational Patterns
-
-To provide the depth, code examples, caveats, and tradeoffs you requested without overwhelming you with a massive document, we will break this down module by module. Here is the deep dive into **Module 1**.
 
 ### 1. Custom Hooks
 
