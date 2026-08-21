@@ -107,7 +107,7 @@ Standard React patterns often fail under extreme production loads—such as WebS
 ### 1. Compound Component Pattern
 Encapsulates shared state implicitly without exposing context consumers directly to the end-user API:
 ```tsx
-<Form 'John' firstName: initialValues="{{" onSubmit="{handleSubmit}" }}>
+<Form initialValues={{ firstName: 'John' }} onSubmit={handleSubmit}>
   <Form.Field label="First Name" name="firstName"/>
   <Form.Field label="Last Name" name="lastName"/>
   <Form.Submit>Save</Form.Submit>
