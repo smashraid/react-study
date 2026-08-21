@@ -181,7 +181,7 @@ export function ResilientUploadManager({
 
 Extracting stateful business logic from UI components into reusable, composable functions.
 
-**Example: `useLocalStorage**`
+**Example: `useLocalStorage`**
 
 ```tsx
 import { useState, useEffect } from 'react';
